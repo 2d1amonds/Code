@@ -33,3 +33,18 @@ def czynnikiPierwsze(n: int):
     if n > 1:
         res.append(n)
     print(res)
+
+def czynnikiPierwsze2(n: int):
+    res = []
+    d = 2
+    while d * d < n:
+        if n % d == 0:
+            n = n // d
+            res.append(d)
+        else:
+            d += 1
+    if n > 1:
+        res.append(n)
+    print(res)
+
+czynnikiPierwsze2(172498174)
