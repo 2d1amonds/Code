@@ -47,4 +47,9 @@ def czynnikiPierwsze2(n: int):
         res.append(n)
     print(res)
 
-czynnikiPierwsze2(172498174)
+def silnia(n: int):
+    if n == 1:
+        return n
+    return n * silnia(n-1)
+wynik = silnia(5)
+print(wynik)
