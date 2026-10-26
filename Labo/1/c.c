@@ -55,6 +55,10 @@ void isPalindrome(int n, int p) {
         printf("False\n");
         return;
     }
+    if(p < 2) {
+        printf("Podstawa musi byc >= 2");
+        return;
+    }
     int reversed_num = 0;
     int number = n;
 

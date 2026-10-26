@@ -41,6 +41,9 @@ def rowKwad():
         return "Działanie nie ma rozwiazanie w zbiorze R"
 
 def isPalindrome(n: int, p: int):
+    if p < 2:
+        print("Podstawa musi byc >= 2")
+        return
     reversed_num = 0
     number = n
     while number!= 0:
@@ -48,5 +51,5 @@ def isPalindrome(n: int, p: int):
         number //= p
     print(n == reversed_num)
 
-wynik = rowKwad()
+wynik = None
 print(wynik)
