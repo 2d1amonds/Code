@@ -51,5 +51,12 @@ def silnia(n: int):
     if n == 1:
         return n
     return n * silnia(n-1)
-wynik = silnia(5)
+
+def dwumianNewtona(n: int, k: int):
+    if k == 0 or k == n:
+        return 1
+
+    return dwumianNewtona(n - 1, k) + dwumianNewtona(n - 1, k - 1)
+
+wynik = dwumianNewtona(5, 2)
 print(wynik)
