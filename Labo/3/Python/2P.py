@@ -10,24 +10,14 @@ def newton(n: int, k: int):
             row[j] = row[j] + row[j - 1]
     return row[k]
 
-def read_int(prompt):
-    while True:
-        try:
-            return int(input(prompt))
-        except ValueError:
-            print("Blad: to nie jest liczba calkowita. Sprobuj ponownie.")
-
-
 def main():
-    while True:
-        n = read_int("Podaj liczbe n (n >= 0): ")
-        k = read_int("Podaj liczbe k (0 <= k <= n): ")
-        if n < 0:
-            print("Blad: n musi byc >= 0. Sprobuj ponownie.")
-        elif k < 0 or k > n:
-            print("Blad: k musi spelniac 0 <= k <= n. Sprobuj ponownie.")
-        else:
-            break
+    n = int(input("Podaj liczbe n (n >= 0): "))
+    k = int(input("Podaj liczbe k (0 <= k <= n): "))
+    if n < 0:
+        print("n musi byc >= 0. Sprobuj ponownie.")
+    elif k < 0 or k > n:
+        print("k musi spelniac 0 <= k <= n. Sprobuj ponownie.")
+
 
     print(f"Dwumian Newtona C({n}, {k}) = {newton(n, k)}")
 

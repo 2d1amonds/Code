@@ -1,6 +1,5 @@
 import math
 
-
 def nth_prime(n):
     def upper_bound(n):
         if n < 6:
@@ -34,23 +33,8 @@ def nth_prime(n):
     compute_sieve(s)
     return find_nth(s, n)
 
-
-def read_n():
-    while True:
-        text = input("Podaj liczbe calkowita n >= 1: ")
-        try:
-            n = int(text)
-        except ValueError:
-            print("Blad: to nie jest liczba calkowita. Sprobuj ponownie.")
-            continue
-        if n < 1:
-            print("Blad: n musi byc >= 1. Sprobuj ponownie.")
-            continue
-        return n
-
-
 def main():
-    n = read_n()
+    n = int(input("n musi byc naturalne > 0"))
     print(f"{n}-ta liczba pierwsza to {nth_prime(n)}")
 
 
