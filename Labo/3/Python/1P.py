@@ -1,11 +1,14 @@
+import math
+
 def primenumbers(n):
     def create_sieve(s, n):
         for _ in range(n+1):
             s.append(True)
         s[0] = False
         s[1] = False
+        
     def compute_sieve(s):
-        for i in range(2, len(s)):
+        for i in range(2, math.isqrt(len(s))):
             if s[i]:
                 j = i * i
                 while j < len(s):
@@ -25,17 +28,14 @@ def primenumbers(n):
     return count_primes(s)
 
 def read_n():
-    while True:
-        text = input("Podaj liczbe całkowitą n >= 2: ")
-        try:
-            n = int(text)
-        except ValueError:
-            print("to nie jest liczba calkowita, sprobuj ponownie.")
-            continue
-        if n < 2:
-            print("n musi byc >= 2, sprobuj ponownie.")
-            continue
-        return n
+    text = input("Podaj liczbe całkowitą n >= 2: ")
+    try:
+        n = int(text)
+    except ValueError:
+        print("to nie jest liczba calkowita, sprobuj ponownie.")
+    if n < 2:
+        print("n musi byc >= 2, sprobuj ponownie.")
+    return n
 
 def main():
     n = read_n()

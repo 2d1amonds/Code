@@ -1,41 +1,31 @@
 import math
 
-def nth_prime(n):
-    def upper_bound(n):
-        if n < 6:
-            return 15                  
-        return int(n * (math.log(n) + math.log(math.log(n)))) + 1
+def nliczbP(n: int):
+    if n < 1:
+        return []
+    s = [2]
+    l = 3
+    i = 2
+    while i<= n:
+        if isPrime(l, s):
+            s.append(l)
+            i += 1
+        l += 2
+    return s
 
-    def create_sieve(s, limit):
-        for _ in range(limit + 1):
-            s.append(True)
-        s[0] = False
-        s[1] = False
-
-    def compute_sieve(s):
-        for i in range(2, len(s)):
-            if s[i]:
-                j = i * i               
-                while j < len(s):
-                    s[j] = False
-                    j = j + i
-
-    def find_nth(s, n):
-        c = 0
-        for i in range(len(s)):
-            if s[i]:
-                c = c + 1
-                if c == n:
-                    return i
-
-    s = []
-    create_sieve(s, upper_bound(n))
-    compute_sieve(s)
-    return find_nth(s, n)
+def isPrime(n: int, s: list[int]):
+    for d in s:
+        if d > math.isqrt(n):
+            break
+        if n % d == 0:
+            return False
+        return True
 
 def main():
-    n = int(input("n musi byc naturalne > 0"))
-    print(f"{n}-ta liczba pierwsza to {nth_prime(n)}")
-
+    n = int(input("Podaj liczbe n, aby wypisac n liczb pierwszych: "))
+    if n < 0:
+        print("n musi byc >= 0")
+        return
+    print(nliczbP(n))
 
 main()
