@@ -1,1 +1,1 @@
-Just a project from a tutorial
+listy na laboratorium z WIP
