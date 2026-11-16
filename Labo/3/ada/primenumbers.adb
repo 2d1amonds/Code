@@ -13,7 +13,7 @@ procedure PrimeNumbers is
             end loop;
             for i in s'First .. s'Last loop
                 if s (i) then
-                    j := i + i;
+                    j := i * i;
                     while j <= n loop
                         s (j) := False;
                         j := j + i;

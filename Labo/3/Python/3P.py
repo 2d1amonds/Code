@@ -19,7 +19,7 @@ def isPrime(n: int, s: list[int]):
             break
         if n % d == 0:
             return False
-        return True
+    return True
 
 def main():
     n = int(input("Podaj liczbe n, aby wypisac n liczb pierwszych: "))

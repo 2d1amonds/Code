@@ -19,13 +19,13 @@ procedure Dwumian is
 
    N, K : Integer;
 begin
-   Put("Podaj liczbe n (n >= 0): ");
+   Put("Podaj liczbe n >= 0: ");
    Get(N);
-   Put("Podaj liczbe k (0 <= k <= n): ");
+   Put("Podaj liczbe k >= 0 i <= n): ");
    Get(K);
 
    if N < 0 or K < 0 or K > N then
-      Put_Line("Blad: wymagane 0 <= k <= n.");
+      Put_Line("wymagane 0 <= k <= n");
    else
       Put_Line("Wynik:" & Long_Long_Integer'Image (Newton (N, K)));
    end if;

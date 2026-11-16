@@ -11,12 +11,12 @@ def newton(n: int, k: int):
     return row[k]
 
 def main():
-    n = int(input("Podaj liczbe n (n >= 0): "))
-    k = int(input("Podaj liczbe k (0 <= k <= n): "))
+    n = int(input("Podaj liczbe n >= 0: "))
+    k = int(input("Podaj liczbe k >= 0 i <= n: "))
     if n < 0:
-        print("n musi byc >= 0. Sprobuj ponownie.")
+        print("n musi byc >= 0")
     elif k < 0 or k > n:
-        print("k musi spelniac 0 <= k <= n. Sprobuj ponownie.")
+        print("k musi byc >= 0 i <= n")
 
 
     print(f"Dwumian Newtona C({n}, {k}) = {newton(n, k)}")
