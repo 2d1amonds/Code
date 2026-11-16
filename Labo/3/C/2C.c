@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int min(int a, int b) {
+static int min(int a, int b) {
     if (a <= b) return a;
     return b;
 }
 
-int newton(int n, int k) {
+long long newton(int n, int k) {
     if (k > n - k) k = n - k;
 
     long long *row = malloc((k + 1) * sizeof(long long));
@@ -18,7 +19,9 @@ int newton(int n, int k) {
             row[j] = row[j] + row[j - 1];
         }
     }
-    return row[k];
+    long long result = row[k];
+    free(row);
+    return result;
 }
 
 int main() {
@@ -27,13 +30,13 @@ int main() {
 
     printf("Podaj liczbe n (n >= 0): ");
     if (scanf("%d", &n) != 1 || n < 0) {
-        printf("Blad: n musi byc liczba calkowita >= 0.\n");
+        printf("n musi byc >= 0\n");
         return 1;
     }
 
     printf("Podaj liczbe k (0 <= k <= n): ");
     if (scanf("%d", &k) != 1 || k < 0 || k > n) {
-        printf("Blad: k musi byc liczba calkowita z przedzialu 0..n.\n");
+        printf("k musi byc >= 0 i k <= n\n");
         return 1;
     }
 

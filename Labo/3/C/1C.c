@@ -8,7 +8,7 @@ void compute_sieve(bool s[], unsigned n) {
     for (i=2; i <= n; i++) s[i] = true;
     for (i=2; i <= n; i++) {
         if (s[i]) {
-            for (j=i+i; j <= n; j +=i) {
+            for (j=i*i; j <= n; j +=i) {
                 s[j] = false;
             }
         }
@@ -24,14 +24,9 @@ unsigned count_primes(bool s[], unsigned n) {
 }
 
 unsigned primenumbers(unsigned n) {
-    bool *sieve = malloc((n + 1) * sizeof(bool));
-    if (!sieve) return 0;             
-
+    bool sieve[n+1];          
     compute_sieve(sieve, n);
-    unsigned result = count_primes(sieve, n);
-
-    free(sieve);
-    return result;
+    return count_primes(sieve, n);
 }
 
 int main() {
@@ -39,15 +34,11 @@ int main() {
 
     printf("Podaj liczbe calkowita n >= 2: ");
     if (scanf("%d", &n) != 1 || n < 2) {
-        printf("Blad: n musi byc liczba calkowita >= 2.\n");
+        printf("n musi byc liczba calkowita >= 2\n");
         return 1;
     }
 
     unsigned result = primenumbers((unsigned)n);
-    if (result == 0) {
-        printf("Blad: brak pamieci dla tak duzego n.\n");
-        return 1;
-    }
 
     printf("Liczba liczb pierwszych nie wiekszych od %d: %u\n", n, result);
     return 0;

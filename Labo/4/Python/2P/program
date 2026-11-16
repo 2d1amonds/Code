@@ -1,0 +1,27 @@
+import sys
+
+from wprimes import Totient
+
+def main(argv):
+    if len(argv) < 2:
+        print("Uzycie: python program liczba [liczba ...]", file=sys.stderr)
+        return 1
+
+    numbers = []
+    for arg in argv[1:]:
+        try:
+            n = int(arg)
+        except ValueError:
+            print(f"'{arg}' nie jest liczba calkowita", file=sys.stderr)
+            return 1
+        if n < 1:
+            print(f"{n} nie jest liczba dodatnia", file=sys.stderr)
+            return 1
+        numbers.append(n)
+
+    for n in numbers:
+        print(f"totient({n}) = {Totient(n)}")
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

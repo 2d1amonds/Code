@@ -45,9 +45,8 @@ begin
     Get (n);
 
     if n < 2 then
-        Put_Line ("Blad: n musi byc >= 2.");
+        Put_Line ("n musi byc >= 2");
     else
-        Put_Line ("Liczba liczb pierwszych nie wiekszych od" & Integer'Image (n)
-                  & ":" & Natural'Image (CountPrimeNumbers (n)));
+        Put_Line (Natural'Image (CountPrimeNumbers (n)));
     end if;
 end PrimeNumbers;

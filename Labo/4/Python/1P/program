@@ -1,0 +1,27 @@
+import sys
+
+from primes import PrimeNumbers, Prime, IsPrime
+
+COMMANDS = {"pn": PrimeNumbers, "pr": Prime, "ip": IsPrime}
+
+def main(argv):
+    if len(argv) != 3 or argv[1] not in COMMANDS:
+        print("Uzycie: python program {pn|pr|ip} liczba", file=sys.stderr)
+        return 1
+
+    try:
+        n = int(argv[2])
+    except ValueError:
+        print("drugi argument musi byc liczba calkowita", file=sys.stderr)
+        return 1
+
+    try:
+        print(COMMANDS[argv[1]](n))
+    except ValueError as e:
+        print(f"Blad: {e}", file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

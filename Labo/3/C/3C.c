@@ -3,65 +3,59 @@
 #include <stdbool.h>
 #include <math.h>
 
-unsigned upper_bound(int n) {
-    if (n < 6) return 15;
-    return (int)(n * (log(n) + log(log(n)))) + 1;
-}
+bool isPrime(unsigned n, unsigned *primes, int count) {
+    double limit = sqrt(n);
 
-void compute_sieve(bool s[], unsigned n) {
-    unsigned i, j;
-    s[0] = false;
-    s[1] = false;
-    for (i=2; i <= n; i++) s[i] = true;
-    for (i=2; i <= n; i++) {
-        if (s[i]) {
-            for (j=i+i; j <= n; j +=i) {
-                s[j] = false;
-            }
+    for (int i = 0; i < count; i++) {
+        unsigned d = primes[i];
+        if (d > limit) {
+            break;
+        }
+        if (n % d == 0) {
+            return false;
         }
     }
+    return true;
 }
 
-unsigned find_nth(bool s[],unsigned limit, unsigned n) {
-    unsigned c = 0;
-    for (unsigned i=0; i<= limit; i++) {
-        if (s[i]) {
-            c++;
-            if (c == n) {
-                return i;
-            }
-        }
+unsigned *nLiczbP(int n) {
+    if (n < 1) {
+        return NULL;
     }
-    return 0;
-}
 
-unsigned primenumbers(unsigned n) {
-    unsigned limit = upper_bound(n);
-    bool *sieve = malloc((limit + 1) * sizeof(bool));
-    if (!sieve) return 0;
+    unsigned *primes = malloc(n * sizeof *primes);
 
-    compute_sieve(sieve, limit);
-    unsigned result = find_nth(sieve, limit, n);
+    primes[0] = 2;
+    unsigned l = 3;
+    int count = 1;
 
-    free(sieve);
-    return result;
+    while (count < n) {
+        if (isPrime(l, primes, count)) {
+            primes[count] = l;
+            count += 1;
+        }
+        l += 2;
+    }
+    return primes;
 }
 
 int main() {
     int n;
 
-    printf("Podaj liczbe calkowita n >= 1: ");
+    printf("Podaj liczbe n >= 1, aby wypisac n liczb pierwszych: ");
     if (scanf("%d", &n) != 1 || n < 1) {
-        printf("Blad: n musi byc liczba calkowita >= 1.\n");
+        printf("n musi byc >= 1.\n");
         return 1;
     }
 
-    unsigned result = primenumbers((unsigned)n);
-    if (result == 0) {
-        printf("Blad: brak pamieci dla tak duzego n.\n");
-        return 1;
-    }
+    unsigned *result = nLiczbP(n);
 
-    printf("%d-ta liczba pierwsza to %u\n", n, result);
+    printf("[");
+    for (int i = 0; i < n; i++) {
+        printf(i ? ", %u" : "%u", result[i]);
+    }
+    printf("]\n");
+
+    free(result);
     return 0;
 }

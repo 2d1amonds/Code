@@ -21,7 +21,7 @@ procedure Dwumian is
 begin
    Put("Podaj liczbe n >= 0: ");
    Get(N);
-   Put("Podaj liczbe k >= 0 i <= n): ");
+   Put("Podaj liczbe k >= 0 i k <= n): ");
    Get(K);
 
    if N < 0 or K < 0 or K > N then
