@@ -1,7 +1,7 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
-procedure main is
+procedure PrimeNumber is
     n : Integer;
 
     function isPrime (x : Integer) return Boolean is
@@ -14,7 +14,6 @@ procedure main is
         elsif x mod 2 = 0 then
             return False;
         end if;
-
         while d * d <= x loop
             if x mod d = 0 then
                 return False;
@@ -29,7 +28,7 @@ begin
 
     
     if n < 2 then
-        Put_Line ("Podaj liczby dodatnie większe lub równe 2");
+        Put_Line ("Podaj liczby dodatnie wieksze lub rowne 2");
         return;
     end if;
     if isPrime(n) then
@@ -37,4 +36,4 @@ begin
     else
         Put_Line ("Liczba" & Integer'Image (n) & " NIE jest pierwsza");
     end if;
-end main;
+end PrimeNumber;

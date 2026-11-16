@@ -1,19 +1,19 @@
 with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Integer_Text_IO; use Ada.Integer_Text_IO;
 
-procedure main is
-    n:Integer;
+procedure czPierwsze is
+    n : Integer;
 
-    function rozkladCzPierwsze(x : Integer) is
-        first: Boolean := True;
-        e: Integer;
-        p: Integer := 2;
-        m: integer := x;
+    procedure rozkladCzPierwsze (x : Integer) is
+        first : Boolean := True;
+        e : Integer;
+        p : Integer := 2;
+        m : Integer := x;
     begin
         Put (x, Width => 1);
         Put ("=");
 
-        while p * p < m loop
+        while p * p <= m loop
             if m mod p = 0 then
                 e := 0;
                 while m mod p = 0 loop
@@ -38,7 +38,7 @@ procedure main is
             if not first then
                 Put ("*");
             end if;
-            Put (m, Width => 1)
+            Put (m, Width => 1);
         end if;
         New_Line;
     end rozkladCzPierwsze;
@@ -51,6 +51,5 @@ begin
         return;
     end if;
 
-    PrintFactorization (n);
-end main
-
+    rozkladCzPierwsze (n);
+end czPierwsze;
