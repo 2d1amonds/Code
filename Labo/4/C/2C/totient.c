@@ -1,10 +1,10 @@
 #include "totient.h"
 
-long long Totient(long long n) {
+unsigned Totient(unsigned n) {
     if (n < 1) return -1;
 
-    long long result = n;
-    long long p = 2;
+    unsigned result = n;
+    unsigned p = 2;
 
     while (p <= n/p) {
         if (n % p == 0) {

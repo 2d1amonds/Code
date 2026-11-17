@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     }
 
     int ile = argc - 1;
-    long long *liczby = malloc(ile * sizeof *liczby);
+    unsigned *liczby = malloc(ile * sizeof *liczby);
     if (!liczby) {
         fprintf(stderr, "brak pamieci\n");
         return 1;
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < ile; i++) {
         char *end;
-        long long liczba = strtoll(argv[i + 1], &end, 10);
+        unsigned liczba = strtoll(argv[i + 1], &end, 10);
         if (end == argv[i + 1] || *end != '\0') {
             fprintf(stderr, "argument musi byc liczba\n");
             free(liczby);
@@ -32,12 +32,12 @@ int main(int argc, char *argv[]) {
     }
 
     for (int i = 0; i < ile; i++) {
-        printf("totient(%lld) = %lld\n", liczby[i], Totient(liczby[i]));
+        printf("totient(%u) = %u\n", liczby[i], Totient(liczby[i]));
     }
 
     free(liczby);
     return 0;
 }
 
-// gcc -Wall -Wextra main.c prime.c -o program
+// gcc -Wall -Wextra main.c totient.c -o program
 // ./program komenda liczba

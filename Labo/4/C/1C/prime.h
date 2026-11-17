@@ -2,8 +2,8 @@
 #define PRIME_H
 
 #include <stdbool.h>
-bool IsPrime(long long n);
-long long PrimeNumbers(long long n);
-long long Prime(long long n);
+bool IsPrime(unsigned n);
+unsigned PrimeNumbers(unsigned n);
+unsigned Prime(unsigned n);
 
 #endif
