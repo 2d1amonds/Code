@@ -1,6 +1,6 @@
 import math
 
-def IsPrime(n):
+def IsPrime(n: int):
     limit = math.isqrt(n)
     if n < 2:
         return False
@@ -15,14 +15,14 @@ def IsPrime(n):
 
 
 
-def PrimeNumbers(n):
-    def create_sieve(s, n):
+def PrimeNumbers(n: int):
+    def create_sieve(s: list[int], n: int):
         for _ in range(n+1):
             s.append(True)
         s[0] = False
         s[1] = False
             
-    def compute_sieve(s):
+    def compute_sieve(s: list[int]):
         for i in range(2, math.isqrt(len(s))):
             if s[i]:
                 j = i * i
@@ -30,7 +30,7 @@ def PrimeNumbers(n):
                     s[j] = False
                     j += i
     
-    def count_primes(s):
+    def count_primes(s: list[int]):
         c = 0
         for e in s:
             if e:
@@ -44,7 +44,7 @@ def PrimeNumbers(n):
 
 
 
-def _not_divisible(n, primes):
+def _not_divisible(n: int, primes: list[int]):
     for d in primes:
         if d * d > n:
             break
@@ -53,7 +53,7 @@ def _not_divisible(n, primes):
     return True
 
 
-def Prime(n):
+def Prime(n: int):
     if n < 1:
         raise ValueError("n musi byc >= 1")
     primes = [2]

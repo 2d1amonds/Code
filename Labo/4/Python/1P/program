@@ -6,7 +6,7 @@ COMMANDS = {"pn": PrimeNumbers, "pr": Prime, "ip": IsPrime}
 
 def main(argv):
     if len(argv) != 3 or argv[1] not in COMMANDS:
-        print("Uzycie: python program {pn|pr|ip} liczba", file=sys.stderr)
+        print("uzycie: python program {pn|pr|ip} liczba", file=sys.stderr)
         return 1
 
     try:
@@ -25,3 +25,5 @@ def main(argv):
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv))
+
+# python program komenda liczba
