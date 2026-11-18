@@ -70,3 +70,6 @@ begin
       end;
    end;
 end Pprogram;
+
+-- gnatmake pprogram.adb
+-- ./pprogram komenda liczba

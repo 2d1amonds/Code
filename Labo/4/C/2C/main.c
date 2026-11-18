@@ -40,4 +40,4 @@ int main(int argc, char *argv[]) {
 }
 
 // gcc -Wall -Wextra main.c totient.c -o program
-// ./program komenda liczba
+// ./program [liczba ... liczba]

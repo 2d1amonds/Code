@@ -42,3 +42,6 @@ begin
       end;
    end loop;
 end Wprogram;
+
+-- gnatmake wprogram.adb
+-- ./wprogram [liczba ... liczba]
